@@ -1273,7 +1273,7 @@ func sortIssuesSession(sess *xorm.Session, sortType string) {
 	case "priority":
 		sess.Desc("issue.priority")
 	case "nearduedate":
-		sess.Asc("issue.deadline_unix")
+		sess.OrderBy("issue.deadline_unix == 0, issue.deadline_unix")
 	case "farduedate":
 		sess.Desc("issue.deadline_unix")
 	default:
